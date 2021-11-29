@@ -21,11 +21,12 @@ class EmployersAddForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onAdd(this.state.name, this.state.salary);
+        if (this.state.name.length < 3 || !this.state.salary) return;
         this.setState({
             name: '',
             salary: ''
-        });
+        })
+        this.props.onAdd(this.state.name, this.state.salary);
     }
 
     render() {
